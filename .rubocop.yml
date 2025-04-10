@@ -10,6 +10,7 @@ AllCops:
    - "Gemfile"
 
 
+# 1行あたりの文字数をチェックする
 Layout/LineLength:
  Max: 130
 # 下記ファイルはチェックの対象から外す
