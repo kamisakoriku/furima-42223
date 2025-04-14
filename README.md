@@ -55,12 +55,12 @@
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | postal_code     | string     | null: false                    |
-| prefecture_id   | text       | null: false                    |
-| city            | integer    | null: false                    |
-| addresses       | integer    | null: false,                   |
-| building        | integer    |                                |
-| phone_number    | integer    | null: false                    |
-| order           | integer    | null: false, foreign_key: true |
+| prefecture_id   | integer    | null: false                    |
+| city            | string     | null: false                    |
+| addresses       | string     | null: false,                   |
+| building        | string     |                                |
+| phone_number    | string     | null: false                    |
+| order           | references | null: false, foreign_key: true |
 ### Association
 - belongs_to :order
 - belongs_to_active_hash :prefecture
