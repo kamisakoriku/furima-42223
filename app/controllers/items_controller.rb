@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    # トップページの表示に必要なコードをここに記述
+    @items = Item.all.order("created_at DESC")
   end
 
   def new
