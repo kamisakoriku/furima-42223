@@ -43,7 +43,6 @@ class ItemsController < ApplicationController
     return if current_user.id == @item.user_id
 
     redirect_to root_path
-    nil
   end
 
   def item_params
