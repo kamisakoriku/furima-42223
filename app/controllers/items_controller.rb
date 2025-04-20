@@ -23,6 +23,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    return unless @item.edit
+
+    redirect_to root_path
   end
 
   def update
