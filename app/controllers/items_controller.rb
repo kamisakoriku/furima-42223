@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :ensure_owner, only: [:edit, :update, :destroy]
+
   def index
     @items = Item.all.order('created_at DESC')
   end
@@ -20,15 +21,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    return unless Order.exists?(item_id: @item.id)
-
-    redirect_to root_path
   end
 
   def edit
-    return unless Order.exists?(item_id: @item.id)
-
-    redirect_to root_path
   end
 
   def update
@@ -40,12 +35,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if Order.exists?(item_id: @item.id)
-      redirect_to root_path
-    else
-      @item.destroy
-      redirect_to root_path
-    end
+    @item.destroy
+    redirect_to root_path
   end
 
   private
@@ -66,5 +57,9 @@ class ItemsController < ApplicationController
       :shipping_fee_id, :prefecture_id, :shipping_day_id,
       :price, :image
     ).merge(user_id: current_user.id)
+  end
+
+  def redirect_if_sold_out
+    redirect_to root_path if @item.sold_out?
   end
 end
