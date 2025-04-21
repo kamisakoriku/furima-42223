@@ -20,10 +20,13 @@ class ItemsController < ApplicationController
   end
 
   def show
+    return unless Order.exists?(item_id: @item.id)
+
+    redirect_to root_path
   end
 
   def edit
-    return unless @item.edit
+    return unless Order.exists?(item_id: @item.id)
 
     redirect_to root_path
   end
@@ -37,8 +40,12 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.destroy
-    redirect_to root_path
+    if Order.exists?(item_id: @item.id)
+      redirect_to root_path
+    else
+      @item.destroy
+      redirect_to root_path
+    end
   end
 
   private

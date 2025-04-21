@@ -28,9 +28,9 @@ class OrderShippingAddress
       phone_number: phone_number,
       order_id: order.id
     )
-    #   true
-    # rescue ActiveRecord::RecordInvalid => e
-    #   Rails.logger.error "保存エラー: #{e.message}"
-    #   false
+    true
+  rescue ActiveRecord::RecordInvalid => e
+    Rails.logger.error "保存エラー: #{e.message}"
+    false
   end
 end
