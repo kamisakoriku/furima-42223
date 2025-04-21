@@ -16,9 +16,7 @@ class OrderShippingAddress
             numericality: { other_than: 0, message: "can't be blank" }
 
   def save
-    # 購入情報を保存
     order = Order.create(user_id: user_id, item_id: item_id)
-    # 配送先情報を保存
     ShippingAddress.create(
       postal_code: postal_code,
       prefecture_id: prefecture_id,
