@@ -3,12 +3,12 @@ class OrderShippingAddress
   attr_accessor :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do
-    validates :user_id
-    validates :item_id
-    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
-    validates :city
-    validates :addresses
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid' }
+    validates :user_id, presence: true
+    validates :item_id, presence: true
+    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }, presence: true
+    validates :city, presence: true
+    validates :addresses, presence: true
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid' }, presence: true
     validates :token
   end
   validates :prefecture_id,
@@ -28,5 +28,9 @@ class OrderShippingAddress
       phone_number: phone_number,
       order_id: order.id
     )
+    #   true
+    # rescue ActiveRecord::RecordInvalid => e
+    #   Rails.logger.error "保存エラー: #{e.message}"
+    #   false
   end
 end
