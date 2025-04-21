@@ -9,7 +9,7 @@ class OrderShippingAddress
     validates :city, presence: true
     validates :addresses, presence: true
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid' }, presence: true
-    validates :token
+    validates :token, presence: true
   end
   validates :prefecture_id,
             presence: true,
