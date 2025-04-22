@@ -134,15 +134,11 @@
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" if item.image.attached? %>
               
-              <%# 商品が売れていればsold outを表示しましょう %>
-              <%# <% if @item.purchase.present? %> 
+              <% if item.order.present? %> 
                 <div class="sold-out">
                   <span>Sold Out!!</span>
                 </div>
-              <%# <% end %>  
-              <%# 商品購入機能実装時に条件式を実装する %>
-              <%#= render 'sold_out', item: item %>
-              <%# //商品が売れていればsold outを表示しましょう %>
+              <% end %>  
               
             </div>
             <div class='item-info'>

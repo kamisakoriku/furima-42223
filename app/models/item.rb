@@ -1,7 +1,11 @@
 class Item < ApplicationRecord
+  def sold_out?
+    order.present?
+  end
+
   belongs_to :user
   has_one_attached :image
-  # has_one :order
+  has_one :order
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
@@ -10,7 +14,6 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :shipping_day
 
-  # バリデーションの設定
   validates :image, presence: true
   validates :name, presence: true
   validates :info, presence: true
@@ -19,7 +22,6 @@ class Item < ApplicationRecord
                                     greater_than_or_equal_to: 300,
                                     less_than_or_equal_to: 9_999_999 }
 
-  # ActiveHashのバリデーション
   validates :category_id, :condition_id, :shipping_fee_id,
             :prefecture_id, :shipping_day_id,
             numericality: { other_than: 1, message: 'must be other than 1' }
