@@ -15,7 +15,7 @@ test:
   database: furima_42223_test
 
 production:
-  <<: *default
-  database: furima_42223_production
-  username: furima_42223
-  password: <%= ENV["FURIMA_42223_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV['DATABASE_URL'] %>
