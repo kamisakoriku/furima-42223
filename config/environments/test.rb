@@ -2,6 +2,8 @@ require "active_support/core_ext/integer/time"
 
 
 Rails.application.configure do
+  config.hosts << "www.example.com"
+
   config.active_job.queue_adapter = :inline
   config.enable_reloading = false
 

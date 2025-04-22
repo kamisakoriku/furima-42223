@@ -2,7 +2,6 @@ FactoryBot.define do
   factory :user do
     nickname              { Faker::Name.initials(number: 2) }
     email                 { Faker::Internet.email }
-    # 英字と数字を含む必要があるため、固定のパスワードを使用
     password              { 'abc123' }
     password_confirmation { password }
     last_name             { '山田' }
