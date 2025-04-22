@@ -40,14 +40,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_17_061341) do
   end
 
   create_table "items", charset: "utf8mb3", force: :cascade do |t|
-    t.string "name"
-    t.text "info"
-    t.integer "category_id"
-    t.integer "condition_id"
-    t.integer "shipping_fee_id"
-    t.integer "prefecture_id"
-    t.integer "shipping_day_id"
-    t.integer "price"
+    t.string "name", null: false
+    t.text "info", null: false
+    t.integer "category_id", null: false
+    t.integer "condition_id", null: false
+    t.integer "shipping_fee_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "shipping_day_id", null: false
+    t.integer "price", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_17_061341) do
   create_table "orders", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id", null: false
+    t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_orders_on_item_id"
