@@ -12,8 +12,13 @@
 | birth_date         | date   | null: false               |
 
 ### Association
+<<<<<<< Updated upstream
 - has_many :items
 - has_many :orders
+=======
+- has_many :prototypes
+- has_many :comments
+>>>>>>> Stashed changes
 
 ## items テーブル
 
@@ -30,6 +35,7 @@
 | user            | references | null: false foreign_key: true  |
 
 ### Association
+<<<<<<< Updated upstream
 - belongs_to :user  
 - has_one :order  
 - belongs_to_active_hash :category  
@@ -64,3 +70,40 @@
 ### Association
 - belongs_to :order
 - belongs_to_active_hash :prefecture
+=======
+- belongs_to 
+-	has_one 
+-	belongs_to_active_hash 
+-	belongs_to_active_hash 
+-	belongs_to_active_hash 
+-	belongs_to_active_hash 
+-	belongs_to_active_hash 
+
+
+## ordersテーブル
+
+| Column    | Type       | Options                        |
+| --------- | ---------- | -------------------------------|
+| user      | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
+
+### Association
+-	belongs_to 
+-	belongs_to 
+-	has_one
+
+### shipping_addressesテーブル
+
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| postal_code     | string     | null: false                    |
+| prefecture_id   | text       | null: false                    |
+| city            | integer    | null: false                    |
+| addresses       | integer    | null: false,                   |
+| building        | integer    |                                |
+| phone_number    | integer    | null: false                    |
+| order           | integer    | null: false, foreign_key: true |
+### Association
+-	belongs_to 
+-	belongs_to_active_hash
+>>>>>>> Stashed changes
